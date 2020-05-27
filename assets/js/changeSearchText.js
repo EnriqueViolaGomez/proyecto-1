@@ -7,13 +7,13 @@ function changeSearchText(){
 
     if(selected == "random"){
         searchBar.disabled = true;
-        searchBar.value = "Se buscará una receta aleatoria";
+        searchBar.placeholder = "Se buscará una receta aleatoria";
     } else if(selected == "search"){
         searchBar.disabled = false;
-        searchBar.value = "¿Qué receta desea buscar?";
+        searchBar.placeholder = "¿Qué receta desea buscar?";
     } else{
         searchBar.disabled = false;
-        searchBar.value = "¿Qué ingredientes quieres usar?";
+        searchBar.placeholder = "¿Qué ingredientes quieres usar? (separar con comas)";
     }
 }
 

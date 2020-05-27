@@ -1,0 +1,17 @@
+#options {
+    margin:2px;
+    padding:0;
+    display:none;
+    list-style-type:none;
+    border:1px solid #666;
+    position:absolute;
+    top:80px;
+    left:50px;
+    width:50%;
+}
+#options li {
+    line-height:25px;
+     color:blue;
+    cursor:pointer;
+    background-color: white;
+}

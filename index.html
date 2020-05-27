@@ -20,9 +20,12 @@
             <link rel="stylesheet" href="assets/css/slick.css">
             <link rel="stylesheet" href="assets/css/nice-select.css">
             <link rel="stylesheet" href="assets/css/style.css">
+            <link rel="stylesheet" href="assets/css/viewModeSwitch.css">
+            <link rel="stylesheet" href="assets/css/searchOptions.css">
+
    </head>
 
-   <body>
+   <body onload="onStartState()">
     <!-- Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -53,7 +56,7 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="header-info-right f-right">
-                                <ul class="header-social">    
+                                <ul class="header-social">   
                                     <li><a href="https://github.com/EnriqueViolaGomez"><i class="fab fa-github"></i></a></li>
                                     <li><a href="https://www.linkedin.com/in/enrique-viola-g%C3%B3mez-854883195/"><i class="fab fa-linkedin-in"></i></a></li>
                                     <li><a href="https://www.youtube.com/watch?v=9Yu5qeVEKFo"><i class="fab fa-youtube"></i></a></li>
@@ -81,6 +84,10 @@
                                             <li><a href="#Recomendaciones">Recomendaciones</a></li>
                                             <li><a href="#About">Acerca de nosotros</a></li>
                                             <li><a href="#Reseñas">Reseñas</a></li>
+                                            <label class="switch" checked>
+                                                <input type="checkbox" onchange="switchMode()">
+                                                <span class="slider round"></span>
+                                            </label>
                                         </ul>
                                     </nav>
                                 </div>
@@ -120,7 +127,12 @@
                                 <!-- form -->
                                 <form action="#" class="search-box">
                                     <div class="input-form mb-30">
-                                        <input id="searchBar" type="text" disabled></div>
+                                        <div id="autocomplete">
+                                            <input id="searchBar" type="text" placeholder="Se buscará una receta aleatoria" disabled autocomplete=off onclick="showSearchHistory()"></div>
+                                            <ul id="options">
+    
+                                            </ul>
+                                        </div>
                                     <div class="select-form mb-30">
                                         <div class="select-itms">
                                             <select id="selectBar" onchange="changeSearchText()">
@@ -131,7 +143,7 @@
                                         </div>
                                     </div>
                                     <div class="search-form mb-30">
-                                        <a href="#Receta" id="btnBuscar" onclick="buscarReceta()">Buscar</a>
+                                        <a href="#Receta" id="btnBuscar" onclick="searchRecipe()">Buscar</a>
                                     </div>	
                                 </form>	
                             </div>
@@ -143,7 +155,7 @@
         <!-- slider Area End-->
         <!-- Recipe Area Start-->
         <h1 id="Receta"></h1>
-        <section class="blog_area section-padding">
+        <section id="recipeSection" class="blog_area section-padding" style="display:none;">
             <div id="divRecipe" class="container">
                 <div class="row">
                     <div class="col-lg-8 mb-5 mb-lg-0">
@@ -349,7 +361,7 @@
     </main>
     <footer>
         <!-- Footer Start-->
-        <div class="footer-area footer-padding footer-bg" data-background="assets/img/service/footer_bg.jpg">
+        <div>
             <div class="container">
                 <div class="row d-flex justify-content-between">
                     <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
@@ -367,6 +379,7 @@
                             <div class="footer-tittle">
                                 <div class="footer-pera">
                                     <p>El template para el diseño de ésta página fue descargado de https://colorlib.com/wp/template/gotrip/</p>
+                                    <p>Para obtener las recetas se utiliza la API de https://spoonacular.com/food-api</p>
                                 </div>
                             </div>
                         </div>
@@ -436,14 +449,14 @@
         <!-- Recomended recipes -->
         <script src="./assets/js/recomendedRecipes.js"></script>
 
-        <!-- Acción botones-->
-        <script src="./assets/js/btnAction.js"></script>
-
-        <!-- Buscar receta js-->
-        <script src="./assets/js/buscarReceta.js"></script>
-
         <!-- Cambiar texto de búsqueda -->
         <script src="./assets/js/changeSearchText.js"></script>
+
+        <!-- Almacenar estado de página-->
+        <script src="./assets/js/sessionStorage.js"></script>
+
+        <!-- Buscar receta js-->
+        <script src="./assets/js/recipeSearch.js"></script>
         
     </body>
 </html>
